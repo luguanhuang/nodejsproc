@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+             .page {
+            list-style: none;
+            width: 600px;
+            height: 30px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        </style>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>3D Auto</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+        
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+      <script type="module" crossorigin src="/assets/index_new.js"></script>
+      <link rel="stylesheet" href="/assets/index_new.css">
+      <link type="text/css" rel="stylesheet" href="/assets/css.css" />
+    </head>
+    <body > 
+        <div class="listwrap">
+            <div class="nav">
+                <div><span></span>打分系统</div>
+                </div>
+        </div>
+        <!-- <div class="op"><a href="companyadd.php">add company</a><div class="clear"></div></div> -->
+        <table border="0" align="center" cellpadding="0" cellspacing="0" width="100%" class="listtab">
+            <thead>
+                <tr align="center">
+                    <td>用户账号</td>
+                    <td>建模师账号</td>
+                    <td>资产名字</td>
+                    <td>测试时间</td>
+                    <td>分数</td>
+                    <td>操作</td>
+                </tr>
+                </thead>
+                <tbody>
+                    <% alldata.forEach((item, index)=>{%>
+                     <tr align="center" id="row_<%=item._id%>">
+                    <td><%=alldata[0].username%></td>
+                    <td><%=alldata[0].modelername%></td>
+                  
+                    <!-- <form action="/downconsultantfile"  method="get" enctype="multipart/form-data" id="uploadForminfo"> -->
+                        <!-- <button class="mt-8" style="background:#F87219" id="downloadbtninfo" type="button"><i class="fas fa-download me-1"></i> confirm to Download</button> -->
+                        <!-- <input class="mt-8"  style="background:#F87219"  id="downloadbtninfo" type="submit" value="confirm to Download"> -->
+                        <td><input class="btn" id="btnsave" type="submit" value="资产下载" onclick="downloadFile('<%= item.id%>')" name="btnsave">
+                        <input id="idinfo" name="idinfo" style="display:none" type="hidden" value=<%=index%> />    
+                        <input id="downfileinfo_<%= item.id%>" name="downfileinfo_<%= item.id%>" style="display:none" type="hidden"  value=<%= item.asseturl%> />
+                    <!-- </form> -->
+                    <td><%= item.uploadtime%></td>
+                    <td id="scoreinfo_<%= item.id%>"><%= item.Score%></td>
+                    <% if (item.isscore == 0) {
+                        %>
+                        <!-- <td><a href="/addscore" submitwin="_self">打分</a></td> -->
+                        <td>
+                            <!-- <a id='click' href="###" submitwin="_self">打分</a> -->
+                            <!-- <input type='text'   id='text' /> -->
+                            <!-- <button type="submit" class="btn btn-default btn-primary" οnclick="delOne('${item.id}')">删除</button>  -->
+                            <input type='text'   id='score_<%= item.id%>' />
+                            <button type="submit" class="btn" id="btnsave" onclick="addScore('<%= item.id%>')" name="btnsave">打分</button>  
+                        </td>
+                        
+                   <%} else {
+                        %>
+                        <td>已打分</td>
+                   <% } %>
+                    <!-- <td><a href="#" submitwin="_self">打分</a></td> -->
+                </tr>
+                <%})%>
+                </tbody>
+        </table>
+        <ul class="page">
+            <% if (page == 1) {
+                %>
+                <li><a href="">上一页</a></li>
+           <%} else {
+                %>
+                <li><a href="/admin?page=<%=page-1%>">上一页</a></li>
+           <% } %>
+            <!-- <li><a href="/admin?page=<%= i %>"><%=page%></a></li> -->
+            <!-- <li><a href="/admin?page=<%= i %>">2</a></li> -->
+            <% for(var i = 1 ; i<total+1; i++) {%>
+            <li><a href="/admin?page=<%=i%>"><%=i%></a></li>
+            <% }%>
+
+            <% if (page == total) {
+                %>
+                <li><a href="">下一页</a></li>
+           <%} else {
+                %>
+                <li><a href="/admin?page=<%=page-0+1%>">下一页</a></li>
+           <% } %>
+            
+            <!-- <li><a href="/admin?page=<%=page-0+1%>">下一页</a></li> -->
+        </ul>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        
+
+        <script src= "js/jquery-1.11.3.js"></script>
+        <!-- <script src= "js/jquery.simple-dtpicker.js'"></script> -->
+        <script src="js/axios.min.js"></script> <!--引入axios文件--> 
+        <script type="text/javascript" src="js/socket.io.min.js"></script> <!--引入socket文件--> 
+        <script type="text/javascript">
+
+        function downloadFile(id) 
+        {
+            var idinfo = "downfileinfo_"+id
+                var filename=document.getElementById(idinfo);//通过id获取文本框对象
+
+                // var filename = document.getElementById("downfileinfo");//通过id获取文本框对象
+        axios({
+            url: '/file/downconsultant',
+            method: 'POST',
+            responseType: 'blob',
+            data: {
+            'filename': filename.value
+            }
+        }).then(function (response) {
+            // 将响应回来的数据下载为文件，固定代码
+            // 将响应数据处理为Blob类型
+            var blob = new Blob([response.data]);
+            // 创建一个URL对象
+            var url = window.URL.createObjectURL(blob);
+            // 创建一个a标签
+            var a = document.createElement("a");
+            a.href = url;
+            a.download = filename.value;// 这里指定下载文件的文件名
+            a.click();
+            // 释放之前创建的URL对象
+            window.URL.revokeObjectURL(url);
+        }).catch(function (reason) {
+            console.log(reason)
+        })
+    }
+
+            function addScore(id) 
+            {
+                // console.log("id111=", id)
+                var idinfo = "score_"+id
+                var valinfo=document.getElementById(idinfo);//通过id获取文本框对象
+                // console.log("innerText=", valinfo.value)
+
+                if (confirm('是否打分?')) 
+                {
+                    console.log("innerText=", valinfo.value)
+                    var fulldata = String(id)+":"+valinfo.value;
+                    axios.put(fulldata)
+                        .then(res => {
+                            console.log("have return")
+                            window.location.reload();
+                        });
+                }
+            }
+
+        //     window.onload=function(){
+	    // document.getElementById('click').onclick=function()
+        // {
+        //     if (document.getElementById('text').style.display=='none')
+        //     {
+		// 	       document.getElementById('text').style.display='block'; 
+		// 	 }
+        //      else
+        //      {
+		// 	     document.getElementById('text').style.display='none'; 
+		// 	 }		       
+		//     }
+	    // }
+
+            function downfile(param)
+            {
+                console.log("down file param="+ param)
+            }
+
+            let socket = ""
+             $(document).ready(function () 
+             {
+                console.log("response res111111=")
+                let socket = io.connect('http://47.107.78.77:2020');
+                  // socket.io 固有事件：连接成功后执行该函数。
+                socket.on('connect', function () {
+                    console.log('getasset')
+                    socket.emit('getasset', 'consultant');
+                });
+
+                socket.on("message", function(data){
+                    console.log("data="+data)
+                    // document.getElementById('downloadbtninfo').style = "background:#F87219";
+                    document.getElementById('downloadbtninfo').style = "background:#F87219";
+                    document.getElementById('downloadbtninfo').style.display = "block";
+                    // document.getElementById('downloadbtninfo').style = "background:#F87219"
+                    document.getElementById('imagename').style.display = "block";
+                    // document.getElementById('imagename').value = data;
+                    // document.querySelector("#mt-7").innerHTML  = data
+                    document.getElementById("imagename").innerHTML = data;
+                    document.getElementById('imageinfo').style.display = "block";
+                    document.getElementById('hintinfo').style.display = "block";
+
+                    document.getElementById('uploadhintinfo').style.display = "display:none";
+
+                    document.getElementById('downfilename').value = data;
+
+                    
+                    // <p2 id="imagename" style="display:none">test.png</p2>
+                })
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,110 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>edit company - <?=_GLO_PROJECT_FNAME_?></title>
+    <link type="text/css" rel="stylesheet" href="/assets/css.css" />
+    <style type="text/css">
+      table {
+        min-width: 500px;
+      }
+      .t {
+        width: 180px;
+      }
+      .c {
+        width: 320px;
+      }
+    </style>
+  </head>
+  <body>
+    <form name="frm" id="frm" action="submit.php" onsubmit="javascript:return Group_setting_Validate(this);" submitwin="ajax" method="post">
+      <table align="center" cellpadding="0" cellspacing="0" border="0" class="tab">
+        <caption class="nav">
+          <div><span></span>打分</div>
+        </caption>
+        <tbody>
+          <tr>
+            <td colspan="3" style="padding: 0; border: 0;">
+              <table id="net" border="0">
+              <tr>
+                <td colspan="3" style="padding: 0; border: 0;">
+				          <tr>
+                      <td class="t">账号名字</td>
+                      <td class="c"><input class="input" id="groupname" name="groupname" type="text" value="test"></td>
+                  </tr>
+					
+                  <tr>
+                    <td class="t">资产名字</td>
+                    <td class="c"><input class="input" id="groupname" name="groupname" type="text" value="test"></td>					
+                  </tr>
+                  <tr>
+                      <td class="t">分数</td>
+                      <td class="c"><input class="input" id="groupname" name="groupname" type="text" value="test"></td>					
+                  </tr>
+                </td>
+              </tr>
+
+
+                <!-- <div id = "box-1" class="divOne" style="display:none"> -->
+                  <!-- <div id = "box-1" class="divOne" > -->
+                  <img id="image1" class="Onediv-imgSizeinfo_0" src="/assets/image_2023_10_21T07_51_31_550Z.png"/>
+                  <img id="image2" class="Onediv-imgSizeinfo_1" src="/assets/image_2023_10_21T07_51_08_873Z.png"/>
+                  <img id="image2" class="Onediv-imgSizeinfo_2" src="/assets/image_2023_10_21T07_51_08_873Z.png"/>
+                  <!-- <img id="image3" class="Onediv-imgSizeinfo_2" src="/assets/image_2023_10_21T07_50_52_092Z.png"/> -->
+                  <!-- <table border="0" align="right" cellpadding="0" cellspacing="0" class="listtab" style="width:60%;height:30px;">
+               
+                 <tbody>
+                 </tbody>
+                 </table> -->
+                <!-- </div> -->
+                <tr>
+                  <td  class="f" colspan="2">
+                    <div class="left130">
+                      <input class="btn" id="btnsave" type="submit" value="打分" name="btnsave">
+                      <input class="btn" id="btnreset" type="button" value="重置" onclick="textClear()">
+                      <input class="btn" id="btnreset" type="button" value="返回" onclick="window.location.href='group.php'">
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+         
+        </tbody>
+      </table>
+      <input name="actstep"  id="actstep" type="hidden" value="add">
+      <input name="php_interface" type="hidden" id="php_interface" value="Group::editGroup">
+	  <input name="php_parameter" type="hidden" id="php_parameter" value="[['companyname','active','id','groupname'],'actstep']" >
+      <input name="php_returnmode" type="hidden" id="php_returnmode" value="normal">
+    </form>
+
+    <script type="text/javascript" src="js/route.js"></script>
+   
+    <script type="text/javascript">
+      var sel_val = 'net';
+      function change() {
+        sel_val = document.getElementById('type').value;
+        var net_id = document.getElementById('net');
+        var host_id = document.getElementById('host');
+        var host_id2 = document.getElementById('host2');
+        if(sel_val == 'net') {
+          net_id.style.display = 'block';
+          host_id.style.display = 'block';
+          host_id2.style.display = 'block';
+          sel_val = 'host';
+        }
+        else {
+          net_id.style.display = 'block';
+          host_id.style.display = 'none';
+          host_id2.style.display = 'none';
+          sel_val = 'net';
+        }
+      }
+      function textClear() {
+        document.getElementById('ip').value='';
+        document.getElementById('netgate').value='';
+      }
+    </script>
+  </body>
+</html>

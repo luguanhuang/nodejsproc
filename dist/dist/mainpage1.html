@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>3D Auto</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+        
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+      <script type="module" crossorigin src="/assets/index_new.js"></script>
+      <link rel="stylesheet" href="/assets/index_new.css">
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand font-effect-neon ps-3" href="mainpage1.html">3D Auto-demo</a>
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <!-- Navbar Search-->
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <button class="btn btn-info" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+            <!-- Navbar-->
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#!">Settings</a></li>
+                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Core</div>
+                            <a class="nav-link" href="mainpage1.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
+                                Home2
+                            </a>
+                            <!-- <div class="sb-sidenav-menu-heading">Mode</div>
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Prompt
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                                    <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                                </nav>
+                            </div>
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Graph
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                                    <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                                </nav>
+                            </div>
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                Video
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        Authentication
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="login.html">Login</a>
+                                            <a class="nav-link" href="register.html">Register</a>
+                                            <a class="nav-link" href="password.html">Forgot Password</a>
+                                        </nav>
+                                    </div>
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                                        Error
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="401.html">401 Page</a>
+                                            <a class="nav-link" href="404.html">404 Page</a>
+                                            <a class="nav-link" href="500.html">500 Page</a>
+                                        </nav>
+                                    </div>
+                                </nav>
+                            </div> -->
+                            <!-- <div class="sb-sidenav-menu-heading">Addons</div>
+                            <a class="nav-link" href="charts.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Charts
+                            </a>
+                            <a class="nav-link" href="tables.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Tables
+                            </a> -->
+                        </div>
+                    </div>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Logged in as:</div>
+                        User
+                    </div>
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <!-- <h1 class="mt-4">Home1</h1> -->
+                        <ol class="breadcrumb mb-4">
+                            <img id="imageinfo"  class="mt-4" src="/image.png" width="50" height="50" alt="222" title="222" />
+                            <p2 class="mt-7" id="imagename" ">test.png</p2>
+                            <p class="mt-6"  id="hintinfo" align="center">
+                                <tr >
+                                  <td class="t">
+                                  若超过5分钟不confirm download 则取消重新派遣
+                                  </td>
+                                </tr>
+                              </p>
+                              <form action="/testdata" method="post" enctype="multipart/form-data" id="uploadForm">
+                                <!-- <button class="mt-8" style="background:#F87219" id="downloadbtninfo" type="button"><i class="fas fa-download me-1"></i> confirm to Download</button> -->
+                                <input class="mt-8" style="background:#F87219"  id="downloadbtn" type="submit" value="confirm to Download">
+                            </form>
+
+                            <table>
+                                <tr>
+                                    <td>username</td>
+                                    <td>112</td>
+                                  </tr>
+
+                                  <tr  id="row_1">
+                                    <td class="t">credit: </td>
+                                    <td>332</td>
+                                    <!-- <td>status</td>
+                                    <td>operate</td> -->
+                                  </tr>
+                              
+                                  <tr id="row_2" >
+                                    <td>asset number: </td>
+                                    <td>111</td>
+                                    <!-- <td>status</td>
+                                    <td>operate</td> -->
+                                  </tr>
+                              
+                                  <tr id="row_3" >
+                                    <td >assetinfo: </td>
+                                    <td id="imageurlinfo"></td>
+                                    <!-- <td>status</td>
+                                    <td>operate</td> -->
+                                  </tr>
+                                </table>
+
+                            <!-- <h1 class="mt-4">Home1</h1> -->
+                            <!-- <li class="breadcrumb-item active">Please22 upload your own images and wait for the generation results.</li> -->
+                            <!-- <li class="breadcrumb-item active">Please11 upload your own images and wait for the generation results.</li> -->
+                        </ol>
+                        <div class="row">
+                            <div class="col-xl-8">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-area me-1"></i>
+                                        File Uploader
+                                    </div>
+                                    <div class="card-body">
+                                        <form action="/upload" method="post" enctype="multipart/form-data" id="uploadForm">
+                                            <label for="uploaded_file" class="drop-container" id="dropcontainer">
+                                              <span class="drop-title">Drop image files here</span>
+                                              or
+                                              <input type="file" class="file-input" name="uploaded_file" id="uploaded_file" accept=".png, .jpeg, .jpg">
+                                            </label>
+                                            <input id="id" name="id" style="display:none" type="hidden" value="2" />
+                                        </form>
+                                        <div class="loading" style="text-align: center; display: none; height: 597px;">
+                                            <img src="loading.gif" style="padding-top: 250px;"><br>
+                                            <span style="color: #7cb344; font-size: 20px;">Please wait for generating 3D Mesh & applying texture</span>
+                                        </div>
+                                        <div id="all-assets" style="display: none;">
+                                            <div class="row" >    
+                                                <div class="col-xl-3 col-md-6">
+                                                    <div class="card bg-light text-black mb-4">
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <div class="col-xl-8">
+                                                                    <img src="front.png" style="height: 120px;">
+                                                                </div>
+                                                                <div class="col-xl-4">Xiaowu</div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        <div class="card-footer d-flex align-items-center justify-content-between">
+                                                            <a class="small text-black stretched-link" href="#">View Details</a>
+                                                            <div class="small text-black"><i class="fas fa-angle-right"></i></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-md-6">
+                                                    <div class="card bg-light text-black mb-4">
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <div class="col-xl-8">
+                                                                    <img src="front.png" style="height: 120px;">
+                                                                </div>
+                                                                <div class="col-xl-4">Xiaowu</div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        <div class="card-footer d-flex align-items-center justify-content-between">
+                                                            <a class="small text-black stretched-link" href="#">View Details</a>
+                                                            <div class="small text-black"><i class="fas fa-angle-right"></i></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-md-6">
+                                                    <div class="card bg-light text-black mb-4">
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <div class="col-xl-8">
+                                                                    <img src="front.png" style="height: 120px;">
+                                                                </div>
+                                                                <div class="col-xl-4">Xiaowu</div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        <div class="card-footer d-flex align-items-center justify-content-between">
+                                                            <a class="small text-black stretched-link" href="#">View Details</a>
+                                                            <div class="small text-black"><i class="fas fa-angle-right"></i></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-bar me-1"></i>
+                                        3D Preview
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="3d-preview" style="height:400px;width:100%;"></div>
+                                    </div>
+                                </div>
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-bar me-1"></i>
+                                        Step
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="wrapper">
+                                            <ul class="StepProgress">
+                                                <li class="StepProgress-item"><strong>refreshJWT</strong></li>
+                                                <li class="StepProgress-item"><strong>3D Mesh Generating</strong></li>
+                                                <li class="StepProgress-item"><strong>Texture upscaling</strong></li>
+                                                <li class="StepProgress-item"><strong>Texture projection</strong></li>
+                                                <li class="StepProgress-item"><strong>Availabe downloading</strong></li>
+                                            </ul>
+                                        </div>
+                                        <br>
+                                        <div class="flex-container">
+                                            <button class="btn btn-primary" id="downloadbtn" type="button" disabled><i class="fas fa-download me-1"></i> Download</button>
+                                            <button class="btn btn-danger" id="deletebtn" type="button" disabled><i class="fas fa-trash me-1"></i> Delete</button>
+                                            <button class="btn btn-ligh" id="sharebtn" type="button" disabled><i class="fas fa-share me-1"></i></button>
+                                            <button class="btn btn-light" id="copybtn" type="button" disabled><i class="fas fa-copy me-1"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; 3D Automation Website 2023</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        
+
+        <script src= "js/jquery-1.11.3.js"></script>
+        <!-- <script src= "js/jquery.simple-dtpicker.js'"></script> -->
+        <script src="js/axios.min.js"></script> <!--引入axios文件--> 
+        <script type="text/javascript" src="js/socket.io.min.js"></script> <!--引入socket文件--> 
+        <script type="text/javascript">
+            let socket = ""
+             $(document).ready(function () 
+             {
+                console.log("response res111111=")
+                let socket = io.connect('http://47.107.78.77:2020');
+                  // socket.io 固有事件：连接成功后执行该函数。
+                socket.on('connect', function () {
+                    console.log('getasset')
+                    socket.emit('getasset', 'modeler');
+                });
+
+                socket.on("message", function(data){
+                    console.log("111 info = "+data)
+                    document.getElementById('downloadbtninfo').style = "background:#F87219";
+                    // document.getElementById('downloadbtn').style = "background:#F87219"
+                    document.getElementById('imagename').style.display = "block";
+                    document.getElementById('imageinfo').style.display = "block";
+                    document.getElementById('hintinfo').style.display = "block";
+                    // <p2 id="imagename" style="display:none">test.png</p2>
+                })
+            });
+        </script>
+    </body>
+</html>
